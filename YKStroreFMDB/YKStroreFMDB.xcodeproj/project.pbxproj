@@ -15,6 +15,8 @@
 		26B178551E976D4100C0E237 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26B178531E976D4100C0E237 /* LaunchScreen.storyboard */; };
 		26B178601E976D4100C0E237 /* YKStroreFMDBTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B1785F1E976D4100C0E237 /* YKStroreFMDBTests.m */; };
 		26B1786B1E976D4100C0E237 /* YKStroreFMDBUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B1786A1E976D4100C0E237 /* YKStroreFMDBUITests.m */; };
+		26B1787A1E97735700C0E237 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B178791E97735700C0E237 /* Person.m */; };
+		26B1787D1E97752000C0E237 /* YKStoreFMDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B1787C1E97752000C0E237 /* YKStoreFMDB.m */; };
 		E038F7786FACD46DF256E208 /* libPods-YKStroreFMDB.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D8420D6F464163BFD250279 /* libPods-YKStroreFMDB.a */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +56,10 @@
 		26B178661E976D4100C0E237 /* YKStroreFMDBUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YKStroreFMDBUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		26B1786A1E976D4100C0E237 /* YKStroreFMDBUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YKStroreFMDBUITests.m; sourceTree = "<group>"; };
 		26B1786C1E976D4100C0E237 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		26B178781E97735700C0E237 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
+		26B178791E97735700C0E237 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+		26B1787B1E97752000C0E237 /* YKStoreFMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKStoreFMDB.h; sourceTree = "<group>"; };
+		26B1787C1E97752000C0E237 /* YKStoreFMDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKStoreFMDB.m; sourceTree = "<group>"; };
 		ABC970F7F957982581C698CF /* Pods-YKStroreFMDB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YKStroreFMDB.release.xcconfig"; path = "Pods/Target Support Files/Pods-YKStroreFMDB/Pods-YKStroreFMDB.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,8 +116,12 @@
 			children = (
 				26B178481E976D4100C0E237 /* AppDelegate.h */,
 				26B178491E976D4100C0E237 /* AppDelegate.m */,
+				26B1787B1E97752000C0E237 /* YKStoreFMDB.h */,
+				26B1787C1E97752000C0E237 /* YKStoreFMDB.m */,
 				26B1784B1E976D4100C0E237 /* ViewController.h */,
 				26B1784C1E976D4100C0E237 /* ViewController.m */,
+				26B178781E97735700C0E237 /* Person.h */,
+				26B178791E97735700C0E237 /* Person.m */,
 				26B1784E1E976D4100C0E237 /* Main.storyboard */,
 				26B178511E976D4100C0E237 /* Assets.xcassets */,
 				26B178531E976D4100C0E237 /* LaunchScreen.storyboard */,
@@ -353,6 +363,8 @@
 			files = (
 				26B1784D1E976D4100C0E237 /* ViewController.m in Sources */,
 				26B1784A1E976D4100C0E237 /* AppDelegate.m in Sources */,
+				26B1787A1E97735700C0E237 /* Person.m in Sources */,
+				26B1787D1E97752000C0E237 /* YKStoreFMDB.m in Sources */,
 				26B178471E976D4100C0E237 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
