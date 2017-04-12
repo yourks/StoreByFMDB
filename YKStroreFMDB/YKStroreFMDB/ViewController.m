@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "Person.h"
-#import "YKStoreFMDB.h"
+#import "YKStoreFMDB/YKStoreFMDB.h"
 
 @interface ViewController ()
 @property(nonatomic,strong)NSMutableArray *objArr;
@@ -20,14 +20,43 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UILabel *redLabel = [UILabel new];
+    redLabel.frame = (CGRect){0,100,100,50};
     
+    redLabel.backgroundColor = [UIColor greenColor];
+    [self.view addSubview:redLabel];
+
 }
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    [[YKStoreFMDB sharedInstance]storeObj:self.objArr page:@"1" tableName:@"textTable"];
+//    BOOL isStore = [[YKStoreFMDB yk_sharedInstance]yk_storeObj:self.objArr page:YKStoreFMDBNoPageStore tableName:@"textTable"];
+//    NSLog(@"%hhd",isStore);
     
-//    NSDictionary *dict = [[YKStoreFMDB sharedInstance]readFMDBObjDataWithTableName:@"textTable"];
+//    NSDictionary *dict = [[YKStoreFMDB yk_sharedInstance]yk_readFMDBObjDataWithTableName:@"textTable"];
+//    NSLog(@"%@",dict);
+    
+//    BOOL isStore = [[YKStoreFMDB yk_sharedInstance]yk_updateFMDBObj:self.dataArr page:YKStoreFMDBNoPageStore tableName:@"textTable"];
+//    NSLog(@"%hhd",isStore);
+    
+//    id isStore = [[YKStoreFMDB yk_sharedInstance]yk_selectePage:YKStoreFMDBNoPageStore WithTabel:@"textTable"];
+//    NSLog(@"%@",isStore);
+    
+//    BOOL isStore = [[YKStoreFMDB yk_sharedInstance]yk_deletePage:YKStoreFMDBNoPageStore WithTabel:@"textTable"];
+//    NSLog(@"%hhd",isStore);
+
+//    Class aClass = [Person class];
+//    
+//    NSArray *pArr = [YKRuntimeHelper getPropertyNamesArr:aClass];
+//    
+
+
+//    [YKGlobe shareGlobe].isNight = YES;
+    
+//    YKDetailViewController *VC = [[YKDetailViewController alloc]init];
+//    [self presentViewController:VC animated:YES completion:nil];
 }
+
+
 -(NSArray *)dataArr{
     
     return @[@"0",
@@ -72,7 +101,7 @@
             
             [_objArr  addObject:person];
             
-            person.num = [NSString stringWithFormat:@"%ld",[person.num integerValue] + 1];
+            person.num = [NSString stringWithFormat:@"%d",[person.num integerValue] + 1];
         }
     }
     
