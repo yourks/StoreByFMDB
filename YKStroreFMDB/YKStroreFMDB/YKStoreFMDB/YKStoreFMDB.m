@@ -12,31 +12,10 @@
 //数据库文件名字
 static  NSString *kSqliteName = @"YKStoreFMDB.sqlite";
 
-@implementation YKStoreFMDB{
-    FMDatabase *_database;
-}
-//单例化
-+ (id)yk_sharedInstance{
-    static dispatch_once_t pred = 0;
-    __strong static id _sharedObject = nil;
-    dispatch_once(&pred, ^{
-        _sharedObject = [[self alloc] init];
-    });
-    return _sharedObject;
-}
-
-
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        _database = [[FMDatabase alloc]initWithPath:[self yk_getYKStoreFMDBSqlite]];
-    }
-    return self;
-}
+@implementation YKStoreFMDB
 
 //写入数据库文件
--(NSString *)yk_getYKStoreFMDBSqlite{
++(NSString *)yk_getYKStoreFMDBSqlite{
     
     //打开沙盒
     NSString *cachePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
@@ -48,20 +27,23 @@ static  NSString *kSqliteName = @"YKStoreFMDB.sqlite";
 }
 
 
--(BOOL)yk_storeObj:(id)storeObj page:(NSString *)storePage tableName:(NSString *)tableName{
++(BOOL)yk_storeObj:(id)storeObj page:(NSString *)storePage tableName:(NSString *)tableName{
     
     BOOL sroreSuccessful = NO;
     
-    if ([_database open]) {
+    FMDatabase *database = [[FMDatabase alloc]initWithPath:[YKStoreFMDB yk_getYKStoreFMDBSqlite]];
+
+    
+    if ([database open]) {
         
         NSString *sql = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ ('rowid' integer PRIMARY KEY AUTOINCREMENT NOT NULL,'%@' text DEFAULT '','%@' blob DEFAULT 0)",tableName,@"page",@"obj"];
         
-        if ([_database executeUpdate:sql]) {
+        if ([database executeUpdate:sql]) {
             
             id dataObj = storeObj;
             
             if (storeObj == nil) {
-                [_database close];
+                [database close];
                 return sroreSuccessful;
             }
 
@@ -75,10 +57,10 @@ static  NSString *kSqliteName = @"YKStoreFMDB.sqlite";
             parameters[@"page"] = page;
             parameters[@"obj"] = objData;
             
-            sroreSuccessful = [_database executeUpdate:sql withParameterDictionary:parameters];
+            sroreSuccessful = [database executeUpdate:sql withParameterDictionary:parameters];
         }
         
-        [_database close];
+        [database close];
         
         return sroreSuccessful;
     }
@@ -87,11 +69,13 @@ static  NSString *kSqliteName = @"YKStoreFMDB.sqlite";
 }
 
 
--(NSDictionary*)yk_readFMDBObjDataWithTableName:(NSString *)tableName{
++(NSDictionary*)yk_readFMDBObjDataWithTableName:(NSString *)tableName{
     
-    if ([_database open]) {
+    FMDatabase *database = [[FMDatabase alloc]initWithPath:[YKStoreFMDB yk_getYKStoreFMDBSqlite]];
+    
+    if ([database open]) {
         NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@",tableName];
-        FMResultSet *resultSet = [_database executeQuery:sql];
+        FMResultSet *resultSet = [database executeQuery:sql];
         
         NSMutableDictionary *pageObjDict = [NSMutableDictionary dictionary];
         
@@ -106,7 +90,7 @@ static  NSString *kSqliteName = @"YKStoreFMDB.sqlite";
             
         }
         
-        [_database close];
+        [database close];
         
         
         return [pageObjDict copy];
@@ -115,18 +99,19 @@ static  NSString *kSqliteName = @"YKStoreFMDB.sqlite";
     
 }
 //改
--(BOOL)yk_updateFMDBObj:(id)objDict  page:(NSString *)objPage tableName:(NSString *)tableName{
-
++(BOOL)yk_updateFMDBObj:(id)objDict  page:(NSString *)objPage tableName:(NSString *)tableName{
+    FMDatabase *database = [[FMDatabase alloc]initWithPath:[YKStoreFMDB yk_getYKStoreFMDBSqlite]];
+    
     BOOL upDateSuccessful = NO;
 
-    if ([_database open]) {
+    if ([database open]) {
         NSString *updateSql = [NSString stringWithFormat:
                                @"UPDATE '%@' SET '%@' = '%@' WHERE '%@' = '%@'",
                                tableName,   @"obj",  objDict ,@"page", objPage];
-         upDateSuccessful =[_database executeUpdate:updateSql];
+         upDateSuccessful =[database executeUpdate:updateSql];
     }
     
-    [_database close];
+    [database close];
     
     if (upDateSuccessful) {
         return YES;
@@ -134,18 +119,20 @@ static  NSString *kSqliteName = @"YKStoreFMDB.sqlite";
     return NO;
 }
 //删
-- (BOOL)yk_deletePage:(NSString *)storePage WithTabel:(NSString *) tableName {
++ (BOOL)yk_deletePage:(NSString *)storePage WithTabel:(NSString *) tableName {
     
+    FMDatabase *database = [[FMDatabase alloc]initWithPath:[YKStoreFMDB yk_getYKStoreFMDBSqlite]];
+
     BOOL deleteSuccessful = NO;
 
-    if ([_database open]) {
+    if ([database open]) {
         
         NSString *sqlStr = [NSString stringWithFormat:@"DELETE FROM %@ WHERE page = %@",tableName,storePage];
         
-         deleteSuccessful = [_database executeUpdate:sqlStr];
+         deleteSuccessful = [database executeUpdate:sqlStr];
         
     }
-    [_database close];
+    [database close];
     
     if (deleteSuccessful) {
         return YES;
@@ -155,17 +142,19 @@ static  NSString *kSqliteName = @"YKStoreFMDB.sqlite";
 }
 
 //查
-- (id)yk_selectePage:(NSString *)storePage WithTabel:(NSString *) tableName {
++ (id)yk_selectePage:(NSString *)storePage WithTabel:(NSString *) tableName {
+    
+    FMDatabase *database = [[FMDatabase alloc]initWithPath:[YKStoreFMDB yk_getYKStoreFMDBSqlite]];
     
     id objFromFMDB;
    
-    if ([_database open]) {
+    if ([database open]) {
        //查询语句
 //       NSString *sqlStr = @"SELECT NAME,AGE FROM t_test WHERE AGE = 30;";
        NSString *sqlStr = [NSString stringWithFormat:@"SELECT obj FROM %@ WHERE page = %@",tableName,storePage];
        
        //执行sql查询语句(调用FMDB对象方法)
-       FMResultSet *result =  [_database executeQuery:sqlStr];
+       FMResultSet *result =  [database executeQuery:sqlStr];
        
        while ([result next]) {
            NSData *objData  = [result dataForColumn:@"obj"];
@@ -173,7 +162,7 @@ static  NSString *kSqliteName = @"YKStoreFMDB.sqlite";
            objFromFMDB = [NSKeyedUnarchiver unarchiveObjectWithData:objData];
         }
     }
-    [_database close];
+    [database close];
     
     return objFromFMDB;
 

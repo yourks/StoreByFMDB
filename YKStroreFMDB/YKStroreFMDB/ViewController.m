@@ -28,31 +28,20 @@
 }
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-//    BOOL isStore = [[YKStoreFMDB yk_sharedInstance]yk_storeObj:self.objArr page:YKStoreFMDBNoPageStore tableName:@"textTable"];
-//    NSLog(@"%hhd",isStore);
+    BOOL isStore = [YKStoreFMDB yk_storeObj:self.objArr page:YKStoreFMDBNoPageStore tableName:@"textTable"];
+    NSLog(@"%hhd",isStore);
     
-//    NSDictionary *dict = [[YKStoreFMDB yk_sharedInstance]yk_readFMDBObjDataWithTableName:@"textTable"];
+//    NSDictionary *dict = [YKStoreFMDB yk_readFMDBObjDataWithTableName:@"textTable"];
 //    NSLog(@"%@",dict);
     
-//    BOOL isStore = [[YKStoreFMDB yk_sharedInstance]yk_updateFMDBObj:self.dataArr page:YKStoreFMDBNoPageStore tableName:@"textTable"];
+//    BOOL isStore = [YKStoreFMDB yk_updateFMDBObj:self.dataArr page:YKStoreFMDBNoPageStore tableName:@"textTable"];
 //    NSLog(@"%hhd",isStore);
     
-//    id isStore = [[YKStoreFMDB yk_sharedInstance]yk_selectePage:YKStoreFMDBNoPageStore WithTabel:@"textTable"];
+//    id isStore = [YKStoreFMDB yk_selectePage:YKStoreFMDBNoPageStore WithTabel:@"textTable"];
 //    NSLog(@"%@",isStore);
     
-//    BOOL isStore = [[YKStoreFMDB yk_sharedInstance]yk_deletePage:YKStoreFMDBNoPageStore WithTabel:@"textTable"];
+//    BOOL isStore = [YKStoreFMDB yk_deletePage:YKStoreFMDBNoPageStore WithTabel:@"textTable"];
 //    NSLog(@"%hhd",isStore);
-
-//    Class aClass = [Person class];
-//    
-//    NSArray *pArr = [YKRuntimeHelper getPropertyNamesArr:aClass];
-//    
-
-
-//    [YKGlobe shareGlobe].isNight = YES;
-    
-//    YKDetailViewController *VC = [[YKDetailViewController alloc]init];
-//    [self presentViewController:VC animated:YES completion:nil];
 }
 
 

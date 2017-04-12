@@ -67,21 +67,6 @@ static  NSString *YKStoreFMDBNoPageStore = @"-1";
 @interface YKStoreFMDB : NSObject
 
 /**
- 数据库实例化
-
- @return YKStoreFMDB
- */
-+ (id)yk_sharedInstance;
-
-/**
- 弃用方法
-
- @return 实例对象
- */
--(instancetype)init __attribute__((deprecated("Use sharedInstance instead.")));
-
-
-/**
  将对象存储
 
  @param storeObj 存储对象
@@ -89,7 +74,7 @@ static  NSString *YKStoreFMDBNoPageStore = @"-1";
  @param tableName 存储表名
  @return 更新存储成功
  */
--(BOOL)yk_storeObj:(id)storeObj page:(NSString *)storePage tableName:(NSString *)tableName;
++(BOOL)yk_storeObj:(id)storeObj page:(NSString *)storePage tableName:(NSString *)tableName;
 
 /**
  读取对象
@@ -97,7 +82,7 @@ static  NSString *YKStoreFMDBNoPageStore = @"-1";
  @param tableName 存储表名
  @return 表中字典对象
  */
--(NSDictionary*)yk_readFMDBObjDataWithTableName:(NSString *)tableName;
++(NSDictionary*)yk_readFMDBObjDataWithTableName:(NSString *)tableName;
 
 
 /**
@@ -108,7 +93,7 @@ static  NSString *YKStoreFMDBNoPageStore = @"-1";
  @param tableName 存储表名
  @return 更新是否成功
  */
--(BOOL)yk_updateFMDBObj:(id)storeObj  page:(NSString *)storePage tableName:(NSString *)tableName;
++(BOOL)yk_updateFMDBObj:(id)storeObj  page:(NSString *)storePage tableName:(NSString *)tableName;
 
 
 /**
@@ -118,7 +103,7 @@ static  NSString *YKStoreFMDBNoPageStore = @"-1";
  @param tableName 存储表名
  @return 存储对象
  */
-- (id)yk_selectePage:(NSString *)storePage WithTabel:(NSString *) tableName;
++ (id)yk_selectePage:(NSString *)storePage WithTabel:(NSString *) tableName;
 
 /**
  删除存储对象
@@ -127,5 +112,5 @@ static  NSString *YKStoreFMDBNoPageStore = @"-1";
  @param tableName 存储表名
  @return 是否删除完成
  */
-- (BOOL)yk_deletePage:(NSString *)storePage WithTabel:(NSString *) tableName;
++ (BOOL)yk_deletePage:(NSString *)storePage WithTabel:(NSString *) tableName;
 @end
