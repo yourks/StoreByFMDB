@@ -13,7 +13,6 @@
 @interface ViewController ()
 @property(nonatomic,strong)NSMutableArray *objArr;
 @property(nonatomic,strong)NSArray *dataArr;
-
 @end
 
 @implementation ViewController

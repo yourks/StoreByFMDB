@@ -55,8 +55,12 @@
 
 
 
-
 #import <Foundation/Foundation.h>
+
+
+#define UserDefaults        [NSUserDefaults standardUserDefaults]
+//强制存储    [UserDefaults synchronize];
+
 //当存储的是数组不需要分页仅
 static  NSString *YKStoreFMDBNoPageStore = @"-1";
 
