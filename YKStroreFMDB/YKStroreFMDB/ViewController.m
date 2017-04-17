@@ -28,8 +28,7 @@
 }
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    BOOL isStore = [YKStoreFMDB yk_storeObj:self.objArr page:YKStoreFMDBNoPageStore tableName:@"textTable"];
-    NSLog(@"%hhd",isStore);
+    [YKStoreFMDB yk_storeObj:self.objArr page:YKStoreFMDBNoPageStore tableName:@"textTable"];
     
 //    NSDictionary *dict = [YKStoreFMDB yk_readFMDBObjDataWithTableName:@"textTable"];
 //    NSLog(@"%@",dict);
@@ -89,7 +88,7 @@
             
             [_objArr  addObject:person];
             
-            person.num = [NSString stringWithFormat:@"%d",[person.num integerValue] + 1];
+            person.num = [NSString stringWithFormat:@"%ld",[person.num integerValue] + 1];
         }
     }
     

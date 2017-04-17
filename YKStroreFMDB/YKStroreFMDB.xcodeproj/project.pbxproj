@@ -40,6 +40,7 @@
 /* Begin PBXFileReference section */
 		146D76750C51BADE3E4D13DF /* Pods-YKStroreFMDB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YKStroreFMDB.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YKStroreFMDB/Pods-YKStroreFMDB.debug.xcconfig"; sourceTree = "<group>"; };
 		1D8420D6F464163BFD250279 /* libPods-YKStroreFMDB.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YKStroreFMDB.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2671C1521EA50FEF0018591C /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Header.h; path = YKStroreFMDB/Header.h; sourceTree = SOURCE_ROOT; };
 		26A6A0881E9E016B006CD051 /* YKStoreFMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKStoreFMDB.h; sourceTree = "<group>"; };
 		26A6A0891E9E016B006CD051 /* YKStoreFMDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKStoreFMDB.m; sourceTree = "<group>"; };
 		26B178421E976D4100C0E237 /* YKStroreFMDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YKStroreFMDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,6 +95,7 @@
 			children = (
 				26A6A0881E9E016B006CD051 /* YKStoreFMDB.h */,
 				26A6A0891E9E016B006CD051 /* YKStoreFMDB.m */,
+				2671C1521EA50FEF0018591C /* Header.h */,
 			);
 			path = YKStoreFMDB;
 			sourceTree = "<group>";
@@ -248,7 +250,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = YK;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = YoursKing;
 				TargetAttributes = {
 					26B178411E976D4100C0E237 = {
@@ -447,6 +449,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -495,6 +498,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
